@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"/>
+        <meta name="renderer" content="webkit"/>
+        <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+        <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>HomeCloudPanel</title>
+        <style>
+            body {
+                font-family: Roboto;
+            }
+            mdui-card {
+                margin: 15px;
+                margin-bottom: 20px;
+                padding: 10px;
+            }
+            .mdui-card-header {
+                font-size: 1.25rem;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+            #loading-progress {
+                display: none;
+            }
+        </style>
+  </head>
+  <body>
+        <h1>xxx</h1>
+        <mdui-tabs value="tab-1" full-width>
+          <mdui-tab value="tab-1" icon="space_dashboard">概览</mdui-tab>
+          <mdui-tab value="tab-2" icon="format_list_numbered">进程占用</mdui-tab>
+          <mdui-tab value="tab-3" icon="perm_device_information">系统信息</mdui-tab>
+
+          <mdui-tab-panel slot="panel" value="tab-1">
+            <mdui-card>
+                <div class="mdui-card-header">
+                    <div class="mdui-card-header-title">温度</div>
+                </div>
+                <div class="mdui-card-content">
+                    <pre id="temps"></pre>
+                </div>
+            </mdui-card>
+
+            <mdui-card>
+                <div class="mdui-card-header">
+                    <div class="mdui-card-header-title">CPU</div>
+                </div>
+                <div class="mdui-card-content">
+                    <p><strong>占用百分比: </strong> <span id="cpu-usage">--</span>%</p>
+                    <p><strong>核心数: </strong> <span id="cpu-count">-</span></p>
+                </div>
+            </mdui-card>
+
+            <mdui-card>
+                <div class="mdui-card-header">
+                    <div class="mdui-card-header-title">内存</div>
+                </div>
+                <div class="mdui-card-content">
+                    <p><span id="memory-used">--</span> GB/<span id="memory-total">--</span> GB (<span id="memory-usage">--</span>%)</p>
+                </div>
+            </mdui-card>
+
+            <mdui-card>
+                <div class="mdui-card-header">
+                    <div class="mdui-card-header-title">硬盘</div>
+                </div>
+                <div class="mdui-card-content">
+                    <p><strong>已使用空间百分比: </strong> <span id="disk-usage">--</span>%</p>
+                    <p><strong>总空间: </strong> <span id="disk-total">--</span> GB</p>
+                    <p><strong>已使用: </strong> <span id="disk-used">--</span> GB</p>
+                </div>
+            </mdui-card>
+
+            <mdui-card>
+                <div class="mdui-card-header">
+                    <div class="mdui-card-header-title">运行时间</div>
+                </div>
+                <div class="mdui-card-content">
+                    <p><span id="uptime-days">--</span> 天</p>
+                </div>
+            </mdui-card>
+
+            <mdui-card>
+                <div class="mdui-card-header">
+                    <div class="mdui-card-header-title">网络信息</div>
+                </div>
+                <div class="mdui-card-content">
+                    <p><strong>已发送: </strong> <span id="net-sent">--</span> MB</p>
+                    <p><strong>已接收: </strong> <span id="net-recv">--</span> MB</p>
+                </div>
+            </mdui-card>
+
+          </mdui-tab-panel>
+          <mdui-tab-panel slot="panel" value="tab-2">
+            <mdui-card>
+                <div class="mdui-card-header">
+                    <div class="mdui-card-header-title">进程占用前十</div>
+                </div>
+                <div class="mdui-card-content">
+                    <table class="mdui-table">
+                        <thead>
+                            <tr>
+                                <th>PID</th>
+                                <th>进程名</th>
+                                <th>CPU %</th>
+                            </tr>
+                        </thead>
+                        <tbody id="processes">
+                        </tbody>
+                    </table>
+                </div>
+            </mdui-card>
+          </mdui-tab-panel>
+          <mdui-tab-panel slot="panel" value="tab-3">
+          <mdui-card>
+            这里自己去复制neofetch的（要转义才可以正常显示）
+          </mdui-card>
+          </mdui-tab-panel>
+        </mdui-tabs>
+        <script src="get-linux.js"></script>
+  </body>
+</html>
